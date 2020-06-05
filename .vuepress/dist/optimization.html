@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>性能优化 | 虎皮猫的博客</title>
+    <meta name="description" content="个人博客-wxw">
+    
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.583a6a78.css" as="style"><link rel="preload" href="/blog/assets/js/app.7cc8aca2.js" as="script"><link rel="preload" href="/blog/assets/js/12.80d4bbdf.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.fb3f107b.js"><link rel="prefetch" href="/blog/assets/js/11.2fb24d1c.js"><link rel="prefetch" href="/blog/assets/js/13.f4224636.js"><link rel="prefetch" href="/blog/assets/js/14.afbdecbd.js"><link rel="prefetch" href="/blog/assets/js/15.8de5b498.js"><link rel="prefetch" href="/blog/assets/js/2.a9f2a1df.js"><link rel="prefetch" href="/blog/assets/js/3.52bd1b81.js"><link rel="prefetch" href="/blog/assets/js/4.3d8207ce.js"><link rel="prefetch" href="/blog/assets/js/5.5d714c47.js"><link rel="prefetch" href="/blog/assets/js/6.77f88835.js"><link rel="prefetch" href="/blog/assets/js/7.c4bcbe9f.js"><link rel="prefetch" href="/blog/assets/js/8.15834562.js"><link rel="prefetch" href="/blog/assets/js/9.23bf0e30.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.583a6a78.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">虎皮猫的博客</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/wxw007/learning-note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/wxw007/learning-note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/blog/html.html" class="sidebar-link">HTML 基础</a></li><li><a href="/blog/css.html" class="sidebar-link">CSS 基础</a></li><li><a href="/blog/js.html" class="sidebar-link">JS基础</a></li><li><a href="/blog/algorithm.html" class="sidebar-link">JS算法</a></li><li><a href="/blog/vue.html" class="sidebar-link">vue</a></li><li><a href="/blog/brower.html" class="sidebar-link">浏览器相关</a></li><li><a href="/blog/webpack.html" class="sidebar-link">webpack 知识</a></li><li><a href="/blog/optimization.html" class="active sidebar-link">性能优化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/optimization.html#异步加载script-提高前端性能-defer和async属性的区别" class="sidebar-link">异步加载script, 提高前端性能(defer和async属性的区别)</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/optimization.html#异步加载script的好处" class="sidebar-link">异步加载script的好处</a></li><li class="sidebar-sub-header"><a href="/blog/optimization.html#异步加载script的方式" class="sidebar-link">异步加载script的方式</a></li><li class="sidebar-sub-header"><a href="/blog/optimization.html#插入几万个-dom，如何实现页面不卡顿？" class="sidebar-link">插入几万个 DOM，如何实现页面不卡顿？</a></li></ul></li><li class="sidebar-sub-header"><a href="/blog/optimization.html#首屏优化" class="sidebar-link">首屏优化</a></li></ul></li><li><a href="/blog/git.html" class="sidebar-link">git 使用以及规范</a></li></ul> </div> <div class="page"> <div class="content"><h1 id="性能优化"><a href="#性能优化" aria-hidden="true" class="header-anchor">#</a> 性能优化</h1> <h2 id="异步加载script-提高前端性能-defer和async属性的区别"><a href="#异步加载script-提高前端性能-defer和async属性的区别" aria-hidden="true" class="header-anchor">#</a> 异步加载script, 提高前端性能(defer和async属性的区别)</h2> <blockquote><p>原文链接：https://blog.csdn.net/qq_19644471/article/details/81949680</p></blockquote> <h3 id="异步加载script的好处"><a href="#异步加载script的好处" aria-hidden="true" class="header-anchor">#</a> 异步加载script的好处</h3> <p>为了加快首屏响应速度, 前端会采用代码切割、按需加载等方式优化性能。异步加载script也是一种前端优化的手段。</p> <p>就好比如果我的页面其中一个功能需要打开地图, 但是地图的js插件包是非常大的, 而如果用户不用地图功能的时候, 我们当然不能再给它加载js地图包, 白白让他多花等待时间岂不是很冤枉! 于是我们可以动态插入script, 当用户点击了某个按钮的时候, 再新建script标签, 引入地图js资源。</p> <h3 id="异步加载script的方式"><a href="#异步加载script的方式" aria-hidden="true" class="header-anchor">#</a> 异步加载script的方式</h3> <ol><li>按需加载js</li></ol> <div class="language- extra-class"><pre class="language-text"><code>getMap.onclick = function(){
+    //获得需要插入的位置
+    var oDiv = document.getElementById('div');
+    //异步创建script
+    var script = document.createElement('script');
+
+    script.src = 'https://map.baidu.com/...'
+
+    oDiv.appendChild(script);
+}
+
+</code></pre></div><ol start="2"><li><p>script标签加上defer或async</p> <ul><li>没有defer或async属性，浏览器会立即加载并执行相应的脚本。也就是说在渲染script标签之后的文档之前，不等待后续加载的文档元素，读到就开始加载和执行，此举会阻塞后续文档的加载</li> <li>有了async属性，表示后续文档的加载和渲染与js脚本的加载和执行是并行进行的，即异步执行</li> <li>有了defer属性，加载后续文档的过程和js脚本的加载(此时仅加载不执行)是并行进行的(异步)，js脚本的执行需要等到文档所有元素解析完成之后，DOMContentLoaded事件触发执行之前。</li></ul> <blockquote><p>1.defer和async在网络加载过程是一致的，都是异步执行的</p></blockquote> <ol start="2"><li>两者的区别在于脚本加载完成之后何时执行，可以看出defer更符合大多数场景对应用脚本加载和执行的要求</li> <li>如果存在多个有defer属性的脚本，那么它们是按照加载顺序执行脚本的；而对于async，它的加载和执行是紧紧挨着的，无论声明顺序如何，只要加载完成就立刻执行，它对于应用脚本用处不大，因为它完全不考虑依赖。</li></ol></li> <li><p>通过 ajax 去获取 js 代码，然后通过 eval 执行</p></li> <li><p>创建并插入 iframe，让它异步执行 js</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>var iframe = document.createElement('iframe'); 
+document.body.appendChild(iframe); 
+var doc = iframe.contentWindow.document; 
+doc.open().write('&lt;body οnlοad=&quot;insertJS()&quot;&gt;'); 
+doc.close();
+</code></pre></div><h3 id="插入几万个-dom，如何实现页面不卡顿？"><a href="#插入几万个-dom，如何实现页面不卡顿？" aria-hidden="true" class="header-anchor">#</a> 插入几万个 DOM，如何实现页面不卡顿？</h3> <p>虚拟列表: 只渲染可视区域内的内容，非可见区域的那就完全不渲染了，当用户在滚动的时候就实时去替换渲染的内容。</p> <h4 id="思路"><a href="#思路" aria-hidden="true" class="header-anchor">#</a> 思路</h4> <ol><li>列表中固定只显示少量的数据，比如60条</li> <li>在列表滚动的时候不断的去插入删除dom</li> <li>startIndex、endIndex，不断的改变这个值来获取最新的显示列表</li> <li>paddingTop、paddingBottom撑开容器的滚动区域</li></ol> <div class="language- extra-class"><pre class="language-text"><code> mounted() {
+    const container = this.$refs.container
+    container.addEventListener('scroll', () =&gt; {
+        const top = container.scrollTop
+        this.startIndex = Math.floor(top / 30)
+        this.endIndex = this.startIndex + 60
+
+        this.paddingTop = top
+        if (this.endIndex &gt;= this.list.length - 1) {
+            this.paddingBottom = 0
+            return
+        }
+        this.paddingBottom = this.allHeight - 600 - top
+    })
+},
+</code></pre></div><h2 id="首屏优化"><a href="#首屏优化" aria-hidden="true" class="header-anchor">#</a> 首屏优化</h2> <ol><li>使用懒加载。</li> <li>使用cnd。</li> <li>使用服务端渲染。</li> <li>雪碧图。</li> <li>动态插入js。</li> <li>dom不宜过多，css不要嵌套太多。</li> <li>loading图标和骨架屏提升用户体验。</li></ol></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/blog/webpack.html" class="prev">
+          webpack 知识
+        </a></span> <span class="next"><a href="/blog/git.html">
+          git 使用以及规范
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/blog/assets/js/app.7cc8aca2.js" defer></script><script src="/blog/assets/js/12.80d4bbdf.js" defer></script>
+  </body>
+</html>
