@@ -1,8 +1,9 @@
 module.exports = {
     base: "/blog/",
     title: "虎皮猫的博客",
-    description: "个人博客-wxw",
+    description: "wxw",
     themeConfig: {
+      displayAllHeaders: true, // 默认值：false
         nav: [
           { text: 'github', link: 'https://github.com/wxw007/learning-note' },
         ],

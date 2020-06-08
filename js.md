@@ -548,7 +548,7 @@ body.addEventListener("scoll", function(){
 ```
 
 
-## #防抖
+### 防抖
 考虑一个场景，有一个按钮点击会触发网络请求，但是我们并不希望每次点击都发起网络请求，而是当用户点击按钮**一段时间后没有再次点击**的情况才去发起网络请求，对于这种情况我们就可以使用防抖。
 
 > 防抖:  我会等你到底。在某段时间内，不管你触发了多少次回调，我都只认最后一次
@@ -566,3 +566,54 @@ function fangdou(fn, delay){
     }
 }
 ```
+
+## JS 事件
+
+### 事件传播机制顺序 捕获-目标-冒泡
+1. 捕获阶段：先由文档的根节点document往事件触发对象，从外向内捕获事件对象；
+2. 目标阶段：到达目标事件位置（事发地），触发事件；
+3. 冒泡阶段：再从目标事件位置往文档的根节点方向回溯，从内向外冒泡事件对象。
+
+### 阻止冒泡
+1. `event.stopPagation()`
+2. 若浏览器不兼容第一种写法, 则可以用 `event.cancleBubble=true`
+
+### DOM0 和 DOM2 区别
+
+#### 什么是DOM0 (0级DOM)
+
+1. 一是在标签内写 `onclick` 事件
+2. 二是在JS写`onlicke=function（）{}`函数
+
+#### 什么是DOM2 (2级DOM)
+只有1个---监听方法, `addEventListener()`和`removeEventListener()`
+
+#### 二者区别
+1. DOM0 绑定的方法, 只能在目标阶段和冒泡阶段执行
+2. DOM2 绑定的方法, 可以控制它在捕获阶段执行 (用 addEventListener 的第三个参数)
+
+### e.target 和 e.currentTarget 区别
+**定义**
+
+- e.target: 指向触发事件监听的对象
+- e.currentTarget: 指向添加监听事件的对象
+
+例如: 
+```
+// 一个父元素, 里面包含一个子元素
+<div id="father">
+  <div id="child"></div>
+</div>
+
+<script>
+  // 在父元素绑定点击监听事件
+
+  document.getElementById('father').addEventListener('click', function(e){
+    console.log('e.target: ', e.target) // 打印出 child 元素
+    console.log('e.currentTrget: ', e.currentTrget) // 打印出 father 元素
+  })
+</script>
+
+```
+也就是, `target` 是具体触发事件的元素, `currentTarget` 是绑定了监听事件的元素
+> 注意: 如果直接打印出 `e` , 在浏览器控制台查看 `currentTarget` 会显示 `null`, 因为 `currentTarget` 在你控制台展开查看的时候，已经不存在了, 所以 `currentTarget` 可以在代码里打印出来, 但是打开控制台查看不到。
