@@ -592,11 +592,11 @@ function fangdou(fn, delay){
 1. DOM0 绑定的方法, 只能在目标阶段和冒泡阶段执行
 2. DOM2 绑定的方法, 可以控制它在捕获阶段执行 (用 addEventListener 的第三个参数)
 
-### e.target 和 e.currentTarget 区别
+### event.target 和 event.currentTarget 区别
 **定义**
 
-- e.target: 指向触发事件监听的对象
-- e.currentTarget: 指向添加监听事件的对象
+- event.target: 指向触发事件监听的对象
+- event.currentTarget: 指向添加监听事件的对象·
 
 例如: 
 ```
@@ -608,12 +608,19 @@ function fangdou(fn, delay){
 <script>
   // 在父元素绑定点击监听事件
 
-  document.getElementById('father').addEventListener('click', function(e){
-    console.log('e.target: ', e.target) // 打印出 child 元素
-    console.log('e.currentTrget: ', e.currentTrget) // 打印出 father 元素
+  document.getElementById('father').addEventListener('click', function(event){
+    console.log('event.target: ', event.target) // 打印出 child 元素
+    console.log('event.currentTarget: ', event.currentTarget) // 打印出 father 元素
   })
 </script>
 
 ```
 也就是, `target` 是具体触发事件的元素, `currentTarget` 是绑定了监听事件的元素
 > 注意: 如果直接打印出 `e` , 在浏览器控制台查看 `currentTarget` 会显示 `null`, 因为 `currentTarget` 在你控制台展开查看的时候，已经不存在了, 所以 `currentTarget` 可以在代码里打印出来, 但是打开控制台查看不到。
+
+### 事件委托
+- 原理: 利用 **事件冒泡机制**, 只给最外层容器的相关事件绑定方法。
+
+- 可以基于 `event.target` 判断事件真正的触发源, 做不同的事情。
+
+- 避免了给每一个子元素一个个注册绑定事件, 对性能有很大提高。
