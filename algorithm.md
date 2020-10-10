@@ -4,7 +4,7 @@
 - 核心思想
 
 让数组中的当前项和后一项进行比较，如果当前项比后一项大，则两项交换位置（让大的靠后）即可
-```
+```javascript
 var arr = [2,3,1,8,7,6]
 
 function bubble(arr){
@@ -29,20 +29,21 @@ function bubble(arr){
 
 以拿扑克牌为例, 每次摸新牌都和手里都牌从小到大进行比较，若新牌比手上的某张牌小，就在当前位置插入这张新牌，若比到最后手上没有比新牌大的，就把新牌放在最后。
 
-```
+```javascript
 function insert(arr){
     var handle = [];
-    handle.push(arr[0])
-
-    for (let i = 1; i < arr.length; i++) {
-       for(let j = 0; j<handle.length; j++){
-        if(arr[i]<handle[j]){
-            handle.splice(j, 0, arr[i]);
-            break
+    for (let i = 0; i < arr.length; i++) {
+        var flag = false // 假设 arr[i] 最大不需要插入
+        for(let j = 0; j < handle.length; j++){
+            if(arr[i]<handle[j]){
+                handle.splice(j, 0, arr[i]);
+                flag = true // arr[i] 插入后将标识更改
+                break
+            }
         }
-        handle.push(arr[i])
-       }
-        
+        if (!flag) { // 如果 arr[i] 最大则放在数组最后
+            handle.push(arr[i])
+        }
     }
     return handle
 }
@@ -53,7 +54,7 @@ function insert(arr){
 
 从数组中拿出中间项，剩下的每一项和这个中间项比较，小的放左边，大的放右边，如此反复。
 
-```
+```javascript
 function quick(arr){
     // 如果 arr 只有一个数或者没有，就返回本身
     if(arr.length <= 1){
