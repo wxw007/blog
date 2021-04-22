@@ -6,7 +6,7 @@
 
 然后会执行 `created` 钩子函数，在这一步的时候已经可以访问到之前不能访问到的数据，但是这时候组件还没被挂载，所以是看不到的。
 
-接下来会先执行 `beforeMount` 钩子函数，开始创建 `VDOM，最后执行`  `mounted` 钩子，并将 `VDOM` 渲染为真实 `DOM` 并且渲染数据。组件中如果有子组件的话，会递归挂载子组件，只有当所有子组件全部挂载完毕，才会执行根组件的挂载钩子。
+接下来会先执行 `beforeMount` 钩子函数，开始创建 `VDOM，最后执行` `mounted` 钩子，并将 `VDOM` 渲染为真实 `DOM` 并且渲染数据。组件中如果有子组件的话，会递归挂载子组件，只有当所有子组件全部挂载完毕，才会执行根组件的挂载钩子。
 
 接下来是数据更新时会调用的钩子函数 `beforeUpdate` 和 `updated` ，这两个钩子函数没什么好说的，就是分别在数据更新前和更新后会调用。
 
@@ -22,21 +22,21 @@
 
 ## keep-alive 实现原理
 
-* 首先，你要知道Vue.js内部将DOM节点抽象成了一个个的VNode节点。所以，keep-alive的缓存也是基于VNode节点的而不是直接存储DOM结构。
-* 其实就是将需要缓存的VNode节点保存在this.cache中／在render时, 如果VNode的name符合在缓存条件（可以用include以及exclude控制），则会从this.cache中取出之前缓存的VNode实例进行渲染。
+- 首先，你要知道 Vue.js 内部将 DOM 节点抽象成了一个个的 VNode 节点。所以，keep-alive 的缓存也是基于 VNode 节点的而不是直接存储 DOM 结构。
+- 其实就是将需要缓存的 VNode 节点保存在 this.cache 中／在 render 时, 如果 VNode 的 name 符合在缓存条件（可以用 include 以及 exclude 控制），则会从 this.cache 中取出之前缓存的 VNode 实例进行渲染。
 
 ## 事件修饰符
 
-* stop
-* prevent
-* capture
-* self
-* once
-* passive
-* once
-* async
+- stop
+- prevent
+- capture
+- self
+- once
+- passive
+- once
+- async
 
-``` 
+```
 <!-- 阻止单击事件继续传播 -->
 <a v-on:click.stop="doThis"></a>
 
@@ -64,6 +64,7 @@
 ## 组件通信
 
 ### 父子组件通信
+
 1.props: 父组件通过 `props` 传递数据给子组件，子组件通过 `emit` 发送事件传递数据给父组件，这两种方式是最常用的父子通信实现办法。
 
 > `v-model` , `.async` 修饰符都是语法糖，原理还是子组件派发事件
@@ -73,38 +74,39 @@
 1. vuex
 2. eventBus
 
-eventBus的原理是引入一个新的vue实例，然后通过分别调用这个实例的事件触发和监听来实现通信和参数传递
+eventBus 的原理是引入一个新的 vue 实例，然后通过分别调用这个实例的事件触发和监听来实现通信和参数传递
 
 ### 跨多层次组件通信
 
-1. `provide / inject` 
+1. `provide / inject`
 
 ## computed 和 watch 区别
 
-* computed 是计算属性，依赖其他属性计算值，并且 computed 的值有缓存，只有当计算值变化才会返回内容。
-* watch 监听到值的变化就会执行回调，在回调中可以进行一些逻辑操作。
+- computed 是计算属性，依赖其他属性计算值，并且 computed 的值有缓存，只有当计算值变化才会返回内容。
+- watch 监听到值的变化就会执行回调，在回调中可以进行一些逻辑操作。
 
 需要依赖别的属性来动态获得值的时候可以使用 computed，对于监听到值的变化需要做一些复杂业务逻辑的情况可以使用 watch。
 
-## vue响应式原理
+## vue 响应式原理
 
 `Object.defineProperty()` 来劫持各个属性的 `setter / getter` ，在数据变动时发布消息给订阅者，触发相应的监听回调。
 
 ## 什么是 MVVM，与 MVC 有什么区别
 
 ### MVVM
-MVVM是Model-View-ViewModel的简写。即模型-视图-视图模型。【模型】指的是数据。【视图】指的是所看到的页面。【视图模型】mvvm模式的核心，它是连接view和model的桥梁。
 
-在MVVM的框架下视图和模型是不能直接通信的。它们通过ViewModel来通信，ViewModel通常要实现一个observer观察者，当数据发生变化，ViewModel能够监听到数据的这种变化，然后通知到对应的视图做自动更新，而当用户操作视图，ViewModel也能监听到视图的变化，然后通知数据做改动
+MVVM 是 Model-View-ViewModel 的简写。即模型-视图-视图模型。【模型】指的是数据。【视图】指的是所看到的页面。【视图模型】mvvm 模式的核心，它是连接 view 和 model 的桥梁。
+
+在 MVVM 的框架下视图和模型是不能直接通信的。它们通过 ViewModel 来通信，ViewModel 通常要实现一个 observer 观察者，当数据发生变化，ViewModel 能够监听到数据的这种变化，然后通知到对应的视图做自动更新，而当用户操作视图，ViewModel 也能监听到视图的变化，然后通知数据做改动
 
 ### MVC
 
-MVC是Model-View- Controller的简写。即模型-视图-控制器。M和V指的意思和MVVM中的M和V意思一样。C即Controller指的是页面业务逻辑。使用MVC的目的就是将M和V的代码分离。‘MVC是单向通信。也就是View跟Model，必须通过Controller来承上启下。
+MVC 是 Model-View- Controller 的简写。即模型-视图-控制器。M 和 V 指的意思和 MVVM 中的 M 和 V 意思一样。C 即 Controller 指的是页面业务逻辑。使用 MVC 的目的就是将 M 和 V 的代码分离。‘MVC 是单向通信。也就是 View 跟 Model，必须通过 Controller 来承上启下。
 
 ### MVC 和 MVVM 对比
 
-* MVC模式需要频繁的操作DOM，这样页面就有大量DOM绑定与监听类的操作。
-* MVVM通过 `数据双向绑定` 让数据自动地双向同步，V修改数据自动同步M、M修改数据自动同步到V
+- MVC 模式需要频繁的操作 DOM，这样页面就有大量 DOM 绑定与监听类的操作。
+- MVVM 通过 `数据双向绑定` 让数据自动地双向同步，V 修改数据自动同步 M、M 修改数据自动同步到 V
 
 ## v-model 原理
 
@@ -112,7 +114,7 @@ MVC是Model-View- Controller的简写。即模型-视图-控制器。M和V指的
 
 `model` 选项可以自定义需要绑定的变量名和事件名
 
-``` 
+```
 model: {
     prop: 'checked',
     event: 'change'
@@ -125,7 +127,7 @@ model: {
 
 ## vue-router 知识点
 
-### vue-router有哪几种导航钩子（ 导航守卫 ）？
+### vue-router 有哪几种导航钩子（ 导航守卫 ）？
 
 1. 全局守卫： router.beforeEach
 2. 全局解析守卫： router.beforeResolve
@@ -136,30 +138,34 @@ model: {
 ### hash 模式和 history 模式
 
 #### hash 模式
-#后面 hash 值的变化，并不会导致浏览器向服务器发出请求，浏览器不发出请求，也就不会刷新页面。每次 hash 值的变化，会触发hashchange 这个事件，通过这个事件我们就可以知道 hash 值发生了哪些变化。然后我们便可以监听hashchange来实现更新页面部分内容的操作
+
+#后面 hash 值的变化，并不会导致浏览器向服务器发出请求，浏览器不发出请求，也就不会刷新页面。每次 hash 值的变化，会触发 hashchange 这个事件，通过这个事件我们就可以知道 hash 值发生了哪些变化。然后我们便可以监听 hashchange 来实现更新页面部分内容的操作
 
 #### history 模式
 
-history模式则会将URL修改得就和正常请求后端的URL一样, 如后端没有配置对应/user/id的路由处理，则会返回404错误。
+history 模式则会将 URL 修改得就和正常请求后端的 URL 一样, 如后端没有配置对应/user/id 的路由处理，则会返回 404 错误。
 
 > 当用户刷新页面之类的操作时，浏览器会给服务器发送请求，所以这个实现需要服务器的支持，需要把所有路由都重定向到 `根页面` 。
 
 ## v-for 为何使用 key
-### 为什么要用 key
- 因为 diff 算法中 用 `tag` 和 `key` 来判断是不是相同的节点，从而减少渲染次数，提升渲染性能。
 
+### 为什么要用 key
+
+因为 diff 算法中 用 `tag` 和 `key` 来判断是不是相同的节点，从而减少渲染次数，提升渲染性能。
 
 ### 用什么作为 key
+
 1. 不能用 index 或者 random(随机数) 作为 key。
 2. 最好用数据中不变的部分，例如每条数据的 `id` 来作为 key。
 
 > 如果用 index 等作为 key, 其实和没加 key 一样。
 
 ## vue 常用性能优化
+
 1. 合理使用 `v-show` 和 `v-if`。
 2. 合理使用 `computed`。
 3. `v-for` 加 `key` 。
-4. 自定义事件，DOM事件要及时销毁。
+4. 自定义事件，DOM 事件要及时销毁。
 5. 合理使用异步组件。
 6. 合理使用 `keep-alive` .在一些不需要重复渲染的地方使用。
 7. `data` 层级不要太深。
