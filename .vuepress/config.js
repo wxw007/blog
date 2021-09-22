@@ -16,6 +16,7 @@ module.exports = {
             '/vue',
             '/brower',
             '/webpack',
+            '/webpack-system',
             '/optimization',
             '/git'
         ],
